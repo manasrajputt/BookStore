@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 function Navbar() {
 
-    const [ sticky, setSticky ] = useState(false);
+    const [sticky, setSticky] = useState(false);
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 0) {
@@ -20,9 +21,9 @@ function Navbar() {
 
     return (
         <>
-            <div className={`fixed top-0 left-0 right-0 max-w-screen-2xl container mx-auto md:px-20 px-4 ${sticky
-                    ? "sticky-navbar shadow-md bg-base-200 duration-300 transition-all ease-in-out"
-                    : ""
+            <div className={`fixed top-0 left-0 right-0 max-w-screen-2xl container mx-auto md:px-20 px-4 z-50 ${sticky
+                ? "sticky-navbar shadow-md bg-base-200 duration-300 transition-all ease-in-out"
+                : ""
                 }`}>
                 <div className="navbar">
                     <div className="navbar-start">
@@ -32,10 +33,14 @@ function Navbar() {
                             </div>
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                                 <li>
-                                    <a>Home</a>
+                                    <Link to="/">
+                                        Home
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a>Course</a>
+                                    <Link to="/course">
+                                        Course
+                                    </Link>
                                 </li>
                                 <li>
                                     <a>Contact</a>
@@ -51,10 +56,14 @@ function Navbar() {
                         <div className="navbar-center hidden lg:flex">
                             <ul className="menu menu-horizontal px-1">
                                 <li>
-                                    <a>Home</a>
+                                    <Link to="/">
+                                        Home
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a>Course</a>
+                                    <Link to="/course">
+                                        Course
+                                    </Link>
                                 </li>
                                 <li>
                                     <a>Contact</a>
