@@ -8,9 +8,6 @@ import Cards from './Cards';
 
 function FreeBook() {
   const filterData = list.filter((data) => data.category === "Free");
-  filterData.map((item) => {
-    console.log(filterData.length)
-  })
   var settings = {
     dots: true,
     infinite: false,

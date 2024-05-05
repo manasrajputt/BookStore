@@ -89,10 +89,10 @@
      },
      {
         "id":12,
-        "name":"Entertainment Book",
+        "name":"Drama Book",
         "title": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         "price":0,
-        "category":"Entertainment",
+        "category":"Drama",
         "image":"https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?t=st=1714886582~exp=1714890182~hmac=5b703a4b1dbde83e8d94f2b4ee2e2b660eb95db6624ee46b3de1a40fbeefaec7&w=740"
      },
      {
