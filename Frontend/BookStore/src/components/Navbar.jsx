@@ -42,7 +42,7 @@ function Navbar() {
     return (
         <>
             <div className={`fixed top-0 left-0 right-0 dark:bg-slate-900 dark:text-white max-w-screen-2xl container mx-auto md:px-20 px-4 z-50 ${sticky
-                ? "sticky-navbar shadow-md bg-base-200 dark:bg-slate-950 dark:text-white duration-300 transition-all ease-in-out"
+                ? "sticky-navbar shadow-md bg-base-100 dark:bg-slate-950 dark:text-white duration-300 transition-all ease-in-out"
                 : ""
                 }`}>
                 <div className="navbar">
