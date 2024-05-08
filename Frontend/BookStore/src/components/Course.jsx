@@ -1,9 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Cards from './Cards';
-import list from "../../public/list.json"
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 function Course() {
+
+    const [list, setList] = useState([]);
+    useEffect(()=>{
+        const getBook= async () => {
+            try {
+                const res = await axios.get('http://localhost:3000/book');
+                setList(res.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getBook();
+    },[]);
     return (
         <>
             <div className='max-w-screen-2xl container mx-auto md:px-20 px-4'>
@@ -29,5 +42,6 @@ function Course() {
         </>
     )
 }
+import { useEffect } from 'react';
 
 export default Course
