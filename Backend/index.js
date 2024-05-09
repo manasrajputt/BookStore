@@ -2,11 +2,13 @@ const express = require('express')
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
 const bookRoute = require('./route/bookRoutes');
+const userRoute = require('./route/userRoutes');
 const cors = require('cors')
 dotenv.config();
 
 const app = express()
 app.use(cors());
+app.use(express.json());
 
 const PORT = process.env.PORT || 4000
 const URI = process.env.MONGODBURI;
@@ -21,12 +23,9 @@ mongoose.connect(URI)
   });
 
 
-// app.get('/', (req, res) => {
-//   res.send('Hello World!')
-// })
-
 // define routes
 app.use('/book',bookRoute);
+app.use('/user',userRoute);
 
 app.listen(PORT, () => {
   console.log("server is running on port ", PORT);
