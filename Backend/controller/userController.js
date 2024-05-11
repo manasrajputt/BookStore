@@ -16,7 +16,7 @@ const signup = async (req, res) => {
             password: hashPassword
         })
 
-        res.status(201).json({ message: "User Created Successfully", data: newUser });
+        res.status(201).json({ message: "User Created Successfully", user: newUser });
     } catch (error) {
         console.log("Error: ", error);
         res.status(500).json({ message: "Internal Sever Error" })

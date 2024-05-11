@@ -3,6 +3,9 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './Home/Home'
 import Course from './Course/Course'
 import Signup from './components/Signup'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   return (
@@ -13,6 +16,7 @@ function App() {
         <Route path='/course' element={<Course />} />
         <Route path='/signup' element={<Signup />} />
       </Routes>
+      <ToastContainer />
     </div>
     </>
   )

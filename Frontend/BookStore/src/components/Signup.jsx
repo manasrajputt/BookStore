@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Login from './Login'
 import { useForm } from "react-hook-form";
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 function Signup() {
     const {
@@ -20,14 +21,13 @@ function Signup() {
         axios.post("http://localhost:3000/user/signup",userData)
         .then(res =>{
             if(res.data){
-                console.log(res.data.message)
-                alert(res.data.message);
+                toast.success(res.data.message);
             }
+            localStorage.setItem("User",JSON.stringify(res.data.user))
         })
         .catch( err =>{
             if(err.response){
-                console.log(err)
-                alert(err.response.data.message);
+                toast.error(err.response.data.message);
             }
         });
     }
