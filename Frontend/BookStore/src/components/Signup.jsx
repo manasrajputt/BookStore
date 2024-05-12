@@ -1,16 +1,29 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Login from './Login'
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
 function Signup() {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || "/";
+
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
+
+    useEffect(() => {
+        const theme = localStorage.getItem("theme");
+        if (theme === "dark") {
+            document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+        }
+    }, []);
 
     const onSubmit = (data) => {
         const userData = {
@@ -18,24 +31,25 @@ function Signup() {
             email: data.email,
             password: data.password
         };
-        axios.post("http://localhost:3000/user/signup",userData)
-        .then(res =>{
-            if(res.data){
-                toast.success(res.data.message);
-            }
-            localStorage.setItem("User",JSON.stringify(res.data.user))
-        })
-        .catch( err =>{
-            if(err.response){
-                toast.error(err.response.data.message);
-            }
-        });
+        axios.post("http://localhost:3000/user/signup", userData)
+            .then(res => {
+                if (res.data) {
+                    toast.success(res.data.message);
+                    navigate(from, { replace: true })
+                }
+                localStorage.setItem("User", JSON.stringify(res.data.user))
+            })
+            .catch(err => {
+                if (err.response) {
+                    toast.error(err.response.data.message);
+                }
+            });
     }
     return (
         <>
-            <div className='flex h-screen items-center justify-center'>
-                <div className="w-[600px]">
-                    <div className="modal-box">
+            <div className="flex h-screen items-center justify-center dark:bg-slate-900 dark:text-white">
+                <div className="w-[600px] ">
+                    <div className="modal-box dark:bg-slate-900 dark:text-white">
                         <form onSubmit={handleSubmit(onSubmit)} method="dialog">
                             {/* if there is a button in form, it will close the modal */}
                             <Link to="/" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</Link>

@@ -21,12 +21,17 @@ function Login() {
         .then(res => {
             if(res.data){
                 toast.success(res.data.message);
+                document.getElementById('my_modal_3').close();
+                setTimeout(()=>{
+                    window.location.reload();
+                    localStorage.setItem("User",JSON.stringify(res.data.data))
+                },1000)
             }
-            localStorage.setItem("User",JSON.stringify(res.data.data))
         })
         .catch(err =>{
             if(err.response){
                 toast.error(err.response.data.message);
+                document.getElementById('my_modal_3').close();
             }
         })
     }
