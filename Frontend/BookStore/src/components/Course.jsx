@@ -3,20 +3,26 @@ import Cards from './Cards';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-function Course() {
+function Course({inputValue}) {
 
     const [list, setList] = useState([]);
     useEffect(()=>{
         const getBook= async () => {
             try {
                 const res = await axios.get('http://localhost:3000/book');
-                setList(res.data);
+                let data = res.data;
+                if (inputValue && inputValue.length !== 0) {
+                    console.log(inputValue);
+                  data = data.filter(elem => elem.name.toLowerCase().includes(inputValue.toLowerCase()));
+                }
+                setList(data);
             } catch (error) {
                 console.log(error);
             }
         };
         getBook();
-    },[]);
+    }, [inputValue]);
+
     return (
         <>
             <div className='max-w-screen-2xl container mx-auto md:px-20 px-4'>
