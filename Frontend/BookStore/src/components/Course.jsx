@@ -12,7 +12,6 @@ function Course({inputValue}) {
                 const res = await axios.get('http://localhost:3000/book');
                 let data = res.data;
                 if (inputValue && inputValue.length !== 0) {
-                    console.log(inputValue);
                   data = data.filter(elem => elem.name.toLowerCase().includes(inputValue.toLowerCase()));
                 }
                 setList(data);
